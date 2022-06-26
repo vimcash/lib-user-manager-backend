@@ -26,6 +26,6 @@
   },
   "dependencies": {
     "vcl-interface": "^1.1.16",
-    "vcl-model": "^1.0.11"
+    "vcl-model": "^1.0.12"
   }
 }
