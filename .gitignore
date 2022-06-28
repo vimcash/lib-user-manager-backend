@@ -389,3 +389,5 @@ FodyWeavers.xsd
 
 # Personal
 Pru.ts
+/types/
+*.js
