@@ -1,8 +1,7 @@
 import { getUser } from "../dao";
-import { hash } from "vcl-model"
+import { comparePass } from "../middlewares/comparePass";
 
 export const login = async (username: String, password: String) => {
-    const hashPass = await hash(password);
-    const user = await getUser(username, hashPass);
-    return user ? user : "error"
+    const user = await getUser(username);
+    return user ? comparePass(user, password) : "error"
 }
