@@ -36,14 +36,12 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-exports.register = void 0;
+exports.checkExist = void 0;
 var vcl_model_1 = require("vcl-model");
-var addUser = function (user) {
-    var newUser = vcl_model_1.TradicionalUserModel.build(user);
-    newUser.save();
-    return user;
-};
-var register = function (user) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-    return [2 /*return*/, addUser(user)];
+var checkExist = function (username) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+    switch (_a.label) {
+        case 0: return [4 /*yield*/, vcl_model_1.TradicionalUserModel.findOne({ username: username })];
+        case 1: return [2 /*return*/, (_a.sent()) !== null];
+    }
 }); }); };
-exports.register = register;
+exports.checkExist = checkExist;

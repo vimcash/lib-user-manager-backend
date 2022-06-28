@@ -38,12 +38,16 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 exports.__esModule = true;
 exports.login = void 0;
 var dao_1 = require("../dao");
+var vcl_model_1 = require("vcl-model");
 var login = function (username, password) { return __awaiter(void 0, void 0, void 0, function () {
-    var user;
+    var hashPass, user;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, (0, dao_1.getUser)(username, password)];
+            case 0: return [4 /*yield*/, (0, vcl_model_1.hash)(password)];
             case 1:
+                hashPass = _a.sent();
+                return [4 /*yield*/, (0, dao_1.getUser)(username, hashPass)];
+            case 2:
                 user = _a.sent();
                 return [2 /*return*/, user ? user : "error"];
         }

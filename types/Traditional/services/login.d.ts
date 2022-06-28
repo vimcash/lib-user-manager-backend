@@ -22,6 +22,6 @@
 /// <reference types="mongoose/types/validation" />
 /// <reference types="mongoose" />
 /// <reference types="mongoose/types/inferschematype" />
-export declare const login: (username: String, password: String) => Promise<"error" | (import("vcl-model/types/TradicionalUser").TradicionalUserDocument & {
+export declare const login: (username: String, password: String) => Promise<"error" | (import("vcl-model/TradicionalUser").TradicionalUserDocument & {
     _id: import("mongoose").Types.ObjectId;
 })>;

@@ -22,8 +22,8 @@
 /// <reference types="mongoose/types/validation" />
 /// <reference types="mongoose" />
 /// <reference types="mongoose/types/inferschematype" />
-export declare const getUser: (username: String, password: String) => import("mongoose").Query<import("vcl-model/types/TradicionalUser").TradicionalUserDocument & {
+export declare const getUser: (username: String, password: String) => import("mongoose").Query<import("vcl-model/TradicionalUser").TradicionalUserDocument & {
     _id: import("mongoose").Types.ObjectId;
-}, import("vcl-model/types/TradicionalUser").TradicionalUserDocument & {
+}, import("vcl-model/TradicionalUser").TradicionalUserDocument & {
     _id: import("mongoose").Types.ObjectId;
-}, {}, import("vcl-model/types/TradicionalUser").TradicionalUserDocument>;
+}, {}, import("vcl-model/TradicionalUser").TradicionalUserDocument>;

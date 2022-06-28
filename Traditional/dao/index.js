@@ -11,6 +11,8 @@ var __createBinding = (this && this.__createBinding) || (Object.create ? (functi
     o[k2] = m[k];
 }));
 exports.__esModule = true;
-exports.getUser = void 0;
+exports.checkExist = exports.getUser = void 0;
 var getUser_1 = require("./getUser");
 __createBinding(exports, getUser_1, "getUser");
+var checkExist_1 = require("./checkExist");
+__createBinding(exports, checkExist_1, "checkExist");
