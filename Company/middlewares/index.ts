@@ -1,0 +1,1 @@
+export { comparePass } from "./comparePass";

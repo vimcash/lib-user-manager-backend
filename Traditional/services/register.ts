@@ -1,11 +1,10 @@
-import { TradicionalUserModel } from "vcl-model";
-import { TradicionalUserTable } from "vcl-interface";
-import { checkExist } from "../dao";
+import { TraditionalUserModel } from "vcl-model";
+import { TraditionalUserTable } from "vcl-interface";
 
-const addUser = (user : TradicionalUserTable) => {
-    const newUser = TradicionalUserModel.build(user);
+const addUser = (user : TraditionalUserTable) => {
+    const newUser = TraditionalUserModel.build(user);
     newUser.save();
     return user
 }
 
-export const register = async (user : TradicionalUserTable) => addUser(user)
+export const register = async (user : TraditionalUserTable) => addUser(user)
