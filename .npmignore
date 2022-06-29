@@ -2,3 +2,4 @@ src
 .npmrc
 index.ts
 /Traditional/*/*.ts
+/Company/*/*.ts
