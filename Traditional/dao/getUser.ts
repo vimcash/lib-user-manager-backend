@@ -1,3 +1,3 @@
-import { TradicionalUserModel } from "vcl-model"
+import { TraditionalUserModel } from "vcl-model"
 
-export const getUser = (username: string) => TradicionalUserModel.findOne({username})
+export const getUser = (username: string) => TraditionalUserModel.findOne({username})

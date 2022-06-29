@@ -1,12 +1,15 @@
 {
   "name": "vcl-user-manager",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "Libreria de control de usuarios de VimCash",
   "main": "index.js",
   "types": "types/index.d.ts",
   "scripts": {
     "build-node": "tsc index.ts",
     "build-types": "npx -p typescript tsc index.ts --declaration --allowJs --emitDeclarationOnly --outDir types",
+    "up-version": "npm version --no-git-tag-version patch",
+    "publish": "npm publish --access public",
+    "build-publish": "npm run build-node & npm run build-types & npm run up-version & npm run publish",
     "build": "npm run build-node & npm run build-types",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
