@@ -5,7 +5,7 @@ import { getUser } from "../dao";
 import { comparePass } from "../middlewares/comparePass";
 
 
-export const login = async (req: Request, res: Response) => {
+export const loginCookie = async (req: Request, res: Response) => {
     const { username, password } = req.body;
 
     const user = await getUser(username);
