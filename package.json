@@ -8,8 +8,8 @@
     "build-node": "tsc index.ts",
     "build-types": "npx -p typescript tsc index.ts --declaration --allowJs --emitDeclarationOnly --outDir types",
     "up-version": "npm version --no-git-tag-version patch",
-    "publish": "npm publish --access public",
-    "build-publish": "npm run build-node && npm run build-types && npm run up-version && npm run publish",
+    "publis": "npm publish --access public",
+    "build-publish": "npm run build-node && npm run build-types && npm run up-version && npm run publis",
     "build": "npm run build-node & npm run build-types",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
