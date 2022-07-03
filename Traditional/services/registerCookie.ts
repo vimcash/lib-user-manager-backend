@@ -1,45 +1,30 @@
 import config from "../config/config";
-import { Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
 import { getUser } from "../dao";
 import { TraditionalUserModel } from "vcl-model";
+import { TraditionalUserTable } from "vcl-interface";
 
-export const registerCookie = async (req: Request, res: Response) => {
-  const { 
-    username, 
-    password,      
-    firstName,
-    lastName,
-    phoneNumber,
-    email,
-  } = req.body;
-  const user = await getUser(username);
+const userExist = async (username:string) => await getUser(username);
 
-  if (user) {
+export const registerCookie = async ( user : TraditionalUserTable) => {
+  
+  if (await userExist(user.username)) {
       return "Error"
   }
 
-  const newUser = TraditionalUserModel.build({
-    username, 
-    password,
-    firstName,
-    lastName,
-    phoneNumber,
-    email,
-  });
+  const newUser = TraditionalUserModel.build(user);
   await newUser.save();
 
-  const userJwt = jwt.sign(
-    {
-      id: newUser.id,
-      email: newUser.username,
-    },
-    config.jwtSecret
-  );
+  const userJwt = jwt.sign({
+    id: newUser.id,
+    username: newUser.username,
+  }, config.jwtSecret, { expiresIn: '1h' });
 
-  req.session = {
-    jwt: userJwt,
-  };
+  return userJwt;
 
-  res.status(200).send(newUser);  
+  // req.session = {
+  //   jwt: userJwt,
+  // };
+
+  // res.status(200).send(newUser);  
 }

@@ -1,33 +1,29 @@
 import config from "../config/config";
-import { Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
 import { getUser } from "../dao";
 import { comparePass } from "../middlewares/comparePass";
 
-export const loginCookie = async (req: Request, res: Response) => {
-  const { username, password } = req.body;
+export const loginCookie = async ({ username, password }) => {
   const user = await getUser(username);
 
   if (!user) {
       return "Error"
   }
 
-  const userExist = comparePass(user, password)
-  if (!userExist) {
+  if (!comparePass(user, password)) {
       return "Error"
   }
 
-  const userJwt = jwt.sign(
-    {
-      id: user.id,
-      email: user.username,
-    },
-    config.jwtSecret
-  );
+  const userJwt = jwt.sign({
+    id: user.id,
+    username: user.username,
+  }, config.jwtSecret, { expiresIn: '1h' });
 
-  req.session = {
-    jwt: userJwt,
-  };
+  return userJwt
 
-  res.status(200).send(user);  
+  // req.session = {
+  //   jwt: userJwt,
+  // };
+
+  // res.status(200).send(user);  
 }
