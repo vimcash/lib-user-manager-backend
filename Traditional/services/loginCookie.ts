@@ -5,7 +5,6 @@ import { comparePass } from "../middlewares/comparePass";
 
 export const loginCookie = async (username: string, password: string) => {
 
-  try {
     const user = await getUser(username);
 
     // if (!user) {
@@ -17,8 +16,4 @@ export const loginCookie = async (username: string, password: string) => {
     // }
     
     return user
-
-  } catch (error) {
-    console.log(error);
-  }
 }
