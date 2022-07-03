@@ -21,7 +21,6 @@ jobs:
           tsc index.ts
           npx -p typescript tsc index.ts --declaration --allowJs --emitDeclarationOnly --outDir types
           npm version --no-git-tag-version patch
-          npm publish --access public
           git add .
           git commit -m "ci: Version updated [skip ci]"
           git push
