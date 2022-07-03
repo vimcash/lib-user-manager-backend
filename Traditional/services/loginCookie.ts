@@ -8,13 +8,13 @@ export const loginCookie = async (username: string, password: string) => {
   try {
     const user = await getUser(username);
 
-    if (!user) {
-        return "Error"
-    }
+    // if (!user) {
+    //     return "Error"
+    // }
   
-    if (!comparePass(user, password)) {
-        return "Error"
-    }
+    // if (!comparePass(user, password)) {
+    //     return "Error"
+    // }
     
     return user
 
