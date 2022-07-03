@@ -18,9 +18,7 @@ jobs:
           git config --global user.email secrets.GIT_ACCOUNT
           git config --global user.name secrets.GIT_NAME
           npm install
-          npm run build 
-          npm version --no-git-tag-version patch
-          npm publish --access public
+          npm run build-publish
           git add .
           git commit -m "ci: Version updated [skip ci]"
           git push
