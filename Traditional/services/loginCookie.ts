@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 import { getUser } from "../dao";
 import { comparePass } from "../middlewares/comparePass";
 
-export const loginCookie = async ({ username, password }) => {
+export const loginCookie = async (username: string, password: string) => {
 
   try {
     const user = await getUser(username);
