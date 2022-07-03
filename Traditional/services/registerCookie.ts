@@ -11,20 +11,18 @@ export const registerCookie = async ( user : TraditionalUserTable) => {
   if (await userExist(user.username)) {
       return "Error"
   }
+  try {
+    const newUser = TraditionalUserModel.build(user);
+    await newUser.save();
+  
+    const userJwt = jwt.sign({
+      id: newUser.id,
+      username: newUser.username,
+    }, config.jwtSecret, { expiresIn: '1h' });
+  
+    return userJwt;
 
-  const newUser = TraditionalUserModel.build(user);
-  await newUser.save();
-
-  const userJwt = jwt.sign({
-    id: newUser.id,
-    username: newUser.username,
-  }, config.jwtSecret, { expiresIn: '1h' });
-
-  return userJwt;
-
-  // req.session = {
-  //   jwt: userJwt,
-  // };
-
-  // res.status(200).send(newUser);  
+  } catch (error) {
+    console.log(error);
+  }
 }

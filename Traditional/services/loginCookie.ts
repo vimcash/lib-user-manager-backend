@@ -14,16 +14,15 @@ export const loginCookie = async ({ username, password }) => {
       return "Error"
   }
 
-  const userJwt = jwt.sign({
-    id: user.id,
-    username: user.username,
-  }, config.jwtSecret, { expiresIn: '1h' });
+  try {
+    const userJwt = jwt.sign({
+      id: user.id,
+      username: user.username,
+    }, config.jwtSecret, { expiresIn: '1h' });
+  
+    return userJwt
 
-  return userJwt
-
-  // req.session = {
-  //   jwt: userJwt,
-  // };
-
-  // res.status(200).send(user);  
+  } catch (error) {
+    console.log(error);
+  }
 }
