@@ -4,34 +4,30 @@ import jwt from 'jsonwebtoken';
 import { getUser } from "../dao";
 import { comparePass } from "../middlewares/comparePass";
 
-
 export const loginCookie = async (req: Request, res: Response) => {
-    const { username, password } = req.body;
+  const { username, password } = req.body;
+  const user = await getUser(username);
 
-    const user = await getUser(username);
-    
-    if (!user) {
-        return "Error"
-    }
+  if (!user) {
+      return "Error"
+  }
 
-    const userExist = comparePass(user, password)
+  const userExist = comparePass(user, password)
+  if (!userExist) {
+      return "Error"
+  }
 
-    if (!userExist) {
-        return "Error"
-    }
+  const userJwt = jwt.sign(
+    {
+      id: user.id,
+      email: user.username,
+    },
+    config.jwtSecret
+  );
 
-    const userJwt = jwt.sign(
-        {
-          id: user.id,
-          email: user.username,
-        },
-        config.jwtSecret
-      );
-  
-      // Store it on session object
-      req.session = {
-        jwt: userJwt,
-      };
+  req.session = {
+    jwt: userJwt,
+  };
 
-      res.status(200).send(user);  
+  res.status(200).send(user);  
 }
