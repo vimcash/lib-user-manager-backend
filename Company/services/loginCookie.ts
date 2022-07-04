@@ -16,7 +16,8 @@ export const loginCookie = async ({ username, password }) => {
   
   const userJwt = sign({
     id: user._id.toString(),
-    username: user.username
+    username: user.username,
+    companyID: user.companyID
   }, config.jwtSecret);
   return userJwt
 

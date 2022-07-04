@@ -1,5 +1,3 @@
-import config from "../config/config";
-import jwt from 'jsonwebtoken';
 import { getUser } from "../dao";
 import { TraditionalUserModel } from "vcl-model";
 import { TraditionalUserTable } from "vcl-interface";

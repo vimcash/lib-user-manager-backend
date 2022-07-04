@@ -1,5 +1,5 @@
 import { getUser } from "../dao";
-import { comparePass } from "../middlewares/comparePass";
+import { comparePass } from "../../Core";
 
 export const login = async ({username, password}) => {
     const user = await getUser(username);
