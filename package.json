@@ -1,6 +1,6 @@
 {
   "name": "vcl-user-manager",
-  "version": "1.0.46",
+  "version": "1.0.47",
   "description": "Libreria de control de usuarios de VimCash",
   "main": "index.js",
   "types": "types/index.d.ts",
