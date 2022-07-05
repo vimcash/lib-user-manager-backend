@@ -13,5 +13,5 @@ export const loginCookie = async ({ username, password }) => {
     username: user.username,
     companyID: user.companyID
   }, config.jwtSecret);
-  return userJwt
+  return comparePass(user, password)
 }
