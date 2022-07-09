@@ -5,19 +5,16 @@ import { comparePass } from "../../Core";
 
 export const loginCookie = async ({ username, password }) => {
   const user = await getUser(username);
+  if (!user)
+    return "Error";
+  const compare = await comparePass(user, password);
+  if (!compare)
+    return "Error";
 
-  if (!user) {
-      return "Error"
-  }
-
-  if (!comparePass(user, password)) {
-      return "Error"
-  }
-  
   const userJwt = sign({
     id: user._id.toString(),
-    username: user.username
+    username: user.username,
+    companyID: user.companyID
   }, config.jwtSecret);
-  return userJwt
-
+  return userJwt;
 }
