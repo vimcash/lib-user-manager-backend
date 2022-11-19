@@ -1,6 +1,6 @@
 {
   "name": "vcl-user-manager",
-  "version": "1.0.54",
+  "version": "1.0.56",
   "description": "Libreria de control de usuarios de VimCash",
   "main": "index.js",
   "types": "types/index.d.ts",
@@ -30,7 +30,7 @@
   "dependencies": {
     "express": "^4.18.1",
     "jsonwebtoken": "^8.5.1",
-    "vcl-interface": "^1.1.16",
-    "vcl-model": "^1.0.43"
+    "vcl-interface": "^1.1.57",
+    "vcl-model": "^1.0.64"
   }
 }
